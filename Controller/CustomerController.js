@@ -1,4 +1,9 @@
-import { getAllCustomers } from "../model/CustomerModel.js";
+import {
+  getAllCustomers,
+  saveCustomer,
+  updateCustomer,
+  deleteCustomer,
+} from "../model/CustomerModel.js";
 
 function loadAllCustomers(customers) {
   const tbody = $("#cus-tbl");
@@ -32,16 +37,16 @@ var address;
 var salary;
 
 $("#CustomerManage .saveBtn").click(async function () {
-  custId = $("#CustomerManage .custId").val();
-  custName = $("#CustomerManage .custName").val();
-  custAddress = $("#CustomerManage .custAddress").val();
-  custSalary = $("#CustomerManage .custSalary").val();
+  cusId = $("#CustomerManage .custId").val();
+  name = $("#CustomerManage .custName").val();
+  address = $("#CustomerManage .custAddress").val();
+  salary = $("#CustomerManage .custSalary").val();
 
   let customer = {
-    custId: custId,
-    custName: custName,
-    custAddress: custAddress,
-    custSalary: custSalary,
+    cusId: cusId,
+    name: name,
+    address: address,
+    salary: salary,
   };
 
   let validResult = validate(customer);
@@ -50,7 +55,7 @@ $("#CustomerManage .saveBtn").click(async function () {
     try {
       await saveCustomer(customer);
       alert("Customer Saved Successfully!");
-      refresh();
+      //   refresh();
     } catch (error) {
       alert("Failed to save customer.");
     }
@@ -60,21 +65,21 @@ $("#CustomerManage .saveBtn").click(async function () {
 function validate(customer) {
   let valid = true;
 
-  if (/^C0[0-9]+$/.test(customer.custId)) {
+  if (/^C0[0-9]+$/.test(customer.cusId)) {
     $("#CustomerManage .invalidCustId").text("");
   } else {
     $("#CustomerManage .invalidCustId").text("Invalid Customer Id !!");
     valid = false;
   }
 
-  if (/^(?:[A-Z][a-z]*)(?: [A-Z][a-z]*)*$/.test(customer.custName)) {
+  if (/^(?:[A-Z][a-z]*)(?: [A-Z][a-z]*)*$/.test(customer.name)) {
     $("#CustomerManage .invalidCustName").text("");
   } else {
     $("#CustomerManage .invalidCustName").text("Invalid Customer Name !!");
     valid = false;
   }
 
-  if (/^[A-Z][a-z, ]+$/.test(customer.custAddress)) {
+  if (/^[A-Z][a-z, ]+$/.test(customer.address)) {
     $("#CustomerManage .invalidCustAddress").text("");
   } else {
     $("#CustomerManage .invalidCustAddress").text(
@@ -83,7 +88,7 @@ function validate(customer) {
     valid = false;
   }
 
-  if (customer.custSalary != null && customer.custSalary > 0) {
+  if (customer.salary != null && customer.salary > 0) {
     $("#CustomerManage .invalidCustSalary").text("");
   } else {
     $("#CustomerManage .invalidCustSalary").text("Invalid Customer Salary !!");
@@ -92,7 +97,7 @@ function validate(customer) {
 
   let customers = getAllCustomers();
   for (let i = 0; i < customers.length; i++) {
-    if (customers[i].custId === customer.custId) {
+    if (customers[i].custd === customer.cusId) {
       $("#CustomerManage .invalidCustId").text("Customer Id Already Exists !!");
       valid = false;
     }
