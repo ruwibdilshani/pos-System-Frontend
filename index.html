@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style/Style.css">
+    <title>Home Page</title>
+<body>
+<!--- header--------->
+    <header>
+        
+        <div class="sectionName">
+           <h1>Home</h1>
+        </div>
+         
+        <div class="page-Icon">
+            <img class="" style="width: 40px;" src="" alt="">
+           
+        </div>
+
+        <ul>
+            <li><a href="/home.html" class="nav-link">Home</a></li>
+            <li><a href="#CustomerManage" class="nav-link">Customer</a></li>
+            <li><a href="#ItemManage" class="nav-link">>Item</a></li>
+            <li><a href="#OrderManage" class="nav-link orderManageBtn">Orders</a></li>
+        </ul>
+    </header>
+
+<!--------------------------------end header-------------->
+
+<!--------------------------------home start-------------->
+   
+<!--------------------------------home end-------------->
+
+<!--------------------------------Customer Start-------------->
+
+    <section id="CustomerManage">
+        <div>
+
+            <div>
+                
+    
+                <form id="customerForm">
+                    <div>
+                        <label for="">Customer Id</label>
+                        <input type="text" class="custId">
+                        <h5 class="invalidCustId"></h5>
+                    </div>
+                    <div>
+                        <label for="">Customer Name</label>
+                        <input type="text" class="custName">
+                        <h5 class="invalidCustName">aa</h5>
+                    </div>
+                    <div>
+                        <label for="">Customer Address</label>
+                        <input type="text"  class="custAddress" >
+                        <h5 class="invalidCustAddress"></h5>
+                    </div>
+                    <div>
+                        <label for="">Customer Salary</label>
+                        <input type="number" class="custSalary">
+                        <h5 class="invalidCustSalary"></h5>
+                    </div>
+    
+                    <div class="buttons">
+                        <button type="submit" class="saveBtn">Save Cus.</button>
+                        <button class="removeBtn">Remove</button>
+                        <button class="updateBtn">Update</button>
+                        <button class="searchBtn">GetAll</button>
+                        <button class="cleatBtn">Clear All</button>
+                    </div>
+                </form>
+            </div>
+    
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Id</th>
+                            <th>Customer Name</th>
+                            <th>Customer Address</th>
+                            <th>Customer Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tableRow">
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+<!--------------------------------Customer End-------------->
+
+<!--------------------------------Item Start-------------->
+
+    <section id="ItemManage">
+        <div>
+
+            <div>
+             
+    
+                <form action="" class="inputData" id="ItemForm">
+                    <div>
+                        <label for="">Item Code</label>
+                        <input type="text" class="itemId" readonly>
+                        <h5 class="invalidCode"></h5>
+                    </div>
+                    <div>
+                        <label for="">Item Name</label>
+                        <input type="text" class="itemName">
+                        <h5 class="invalidName"></h5>
+                    </div>
+                    <div>
+                        <label for="">Item Qty</label>
+                        <input type="number" class="itemQty">
+                        <h5 class="invalidQty"></h5>
+                    </div>
+                    <div>
+                        <label for="">Item Price</label>
+                        <input type="number" class="itemPrice">
+                        <h5 class="invalidPrice"></h5>
+                    </div>
+    
+                    <div class="buttons">
+                        <button type="submit" class="saveBtn">Save Item</button>
+                        <button class="deleteBtn">Remove</button>
+                        <button class="updateBtn">Update</button>
+                        <button class="searchBtn">GetAll</button>
+                        <button class="clearBtn">Clear All</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Code</th>
+                            <th>Item Name</th>
+                            <th>Item Qty</th>
+                            <th>Item Price</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tableRow">
+                       
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+<!--------------------------------Item End-------------->
+
+<!--------------------------------Orders Start-------------->
+
+    <section id="OrderManage">
+        <div>
+            <div class="includeDetails">
+               
+                <div>
+                    <form action="">
+                        <div>
+                            <div>
+                                <label for="">Order Id</label>
+                                <input type="text" class="orderId" readonly>
+                            </div>
+                            <div>
+                                <label for="">Order Date</label>
+                                <input type="date" class="orderDate">
+                            </div>
+                            <div>
+                                <label for="">Customer</label>
+                                <select class="customers" name="" id=""></select>
+                            </div>
+                            <div>
+                                <label for="">Customer ID</label>
+                                <input type="text" class="custId">
+                            </div>
+                            <div>
+                                <label for="">Customer Name</label>
+                                <input type="text" class="custName">
+                            </div>
+                            <div>
+                                <label for="">Customer Salary</label>
+                                <input type="number" class="custSalary">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="">Address</label>
+                            <input type="text" class="custAddress">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="ItemSelect">
+                <h1>Item Select</h1>
+                <form action="">
+                    <div>
+                        <div>
+                            <label for="">Item</label>
+                            <select name="" id="" class="itemCmb"></select>
+                        </div>
+                        <div>
+                            <label for="">Item Code</label>
+                            <input type="text" class="itemCode">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="">Item Name</label>
+                            <input type="text" class="itemName">
+                        </div>
+                        <div>
+                            <label for="">Item Price</label>
+                            <input type="number" class="itemPrice">
+                        </div>
+                        <div>
+                            <label for="">Item Qty</label>
+                            <input type="number" class="itemQty">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">Order Qty</label>
+                        <input type="number" class="orderQty">
+                    </div>
+                </form>
+
+                <div>
+                    <button class="addBtn">Add Item</button>
+                </div>
+            </div>
+
+            <div class="TotalCal">
+                <h1>Total : <span class="Total">00.0</span> Rs/=</h1>
+                <h2>Sub Total : <span class="SubTotal">00.0</span> Rs/=</h2>
+
+                <form action="">
+                    <div>
+                        <div>
+                            <label for="">Cash</label>
+                            <input type="number" class="Cash">
+                        </div>
+                        <div>
+                            <label for="">Discount</label>
+                            <input type="number" class="Discount">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="">Balance</label>
+                        <input type="number" class="Balance">
+                    </div>
+                </form>
+
+                <div>
+                    <button class="placeOrder">Purchase</button>
+                </div>
+            </div>
+        </div>
+        <div class="mainTable">
+            <div class="table">
+                <div>
+                    <div>Item Cdoe</div>
+                    <div>Item Name</div>
+                    <div>Price</div>
+                    <div>Qty</div>
+                    <div>Total</div>
+                </div>
+            </div>
+    
+            <div class="tableRows">
+                
+            </div>
+        </div>
+    </section>
+
+    <!--------------------------------Orders End-------------->
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="module" src="Controller/CustomerController.js"></script>
+<script type="module" src="Controller/ItemController.js"></script>
+<script type="module" src="Controller/OrderController.js"></script>
+<script>
+
+$(document).ready(function(){ 
+    
+        $('#homePage').show();
+
+        $('.nav-link').click(function(event){
+            event.preventDefault();
+
+            $('section').hide();
+
+            var targetSection = $(this).attr('href');
+
+            $(targetSection).show();
+            switch(targetSection){
+                case '#CustomerManage':
+                    $('.sectionName h1').text('Customer Manage');
+                    document.title = "Customer Manage";
+                    break;
+                case '#ItemManage':
+                    $('.sectionName h1').text('Item Manage');
+                   
+                    document.title = "Item Manage";
+                    break;
+                case '#OrderManage':
+                    $('.sectionName h1').text('Order Manage');
+                    document.title = "Order Manage";
+                    break;
+                default:
+                    $('.sectionName h1').text('Home');
+                    document.title = "Home";
+            }
+        });
+    });
+
+</script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="Style/home.css" />
+    <!-- Link to your custom CSS -->
+  </head>
+  <body>
+
+    <header>
+        
+        <div class="sectionName">
+           <h1>Home</h1>
+        </div>
+         
+        <div class="page-Icon">
+            <img class="" style="width: 40px;" src="" alt="">
+           
+        </div>
+
+        <ul>
+            <li><a href="/home.html" class="nav-link">Home</a></li>
+            <li><a href="#CustomerManage" class="nav-link">Customer</a></li>
+            <li><a href="#ItemManage" class="nav-link">Item</a></li>
+            <li><a href="#OrderManage" class="nav-link orderManageBtn">Orders</a></li>
+        </ul>
+    </header>
+
+<br>    
+    <br>    </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">Welcome Admin</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Share
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Export
+                </button>
+              </div>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-secondary dropdown-toggle"
+              >
+                <span data-feather="calendar"></span>
+                This week
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Customers</h5>
+                  <p class="card-text">700</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-white bg-warning mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Items</h5>
+                  <p class="card-text">30</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-white bg-danger mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Orders</h5>
+                  <p class="card-text">9</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Purchase</h5>
+                  <p class="card-text">Rs.10000.00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+<br>
+<br>
+          <div class="row">
+            <div class="col-md-4">
+              <canvas id="pieChart"></canvas>
+            </div>
+            <div class="col-md-6">
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/Controller/home.js"></script>
+    <!-- Link to your custom JS -->
+  </body>
+</html>

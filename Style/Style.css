@@ -1,0 +1,403 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+body {
+  background-color: #9d6185;
+}
+header {
+  display: flex;
+  justify-content: space-b etween;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: #eacadd;
+}
+
+header > .sectionName h1 {
+  color: #000000;
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  display: flex;
+  padding-right: 25rem;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  gap: 0vw;
+}
+
+header ul li {
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 400;
+  padding: 10px 20px;
+}
+
+header ul li a {
+  color: #000000;
+  letter-spacing: 0.7px;
+  transition: 0.3s;
+}
+header ul li a img {
+  width: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4px;
+}
+
+header ul li a:hover {
+  padding: 10px 20px;
+  border-radius: 11px;
+  background-color: #000000e8;
+  color: #ff0000;
+  border-bottom: 4px solid #ff0000;
+}
+
+section > div {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  font-size: 18px;
+  padding: 1vw;
+}
+label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+section > :first-child > div {
+  margin-top: 12vh;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 34px;
+}
+
+form div input,
+select {
+  font-weight: bold;
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 11px;
+  background-color: rgba(224, 211, 211, 0.22);
+}
+
+#CustomerManage table,
+#ItemManage table {
+  margin-left: 50px;
+}
+
+#CustomerManage th,
+#CustomerManage td,
+#ItemManage th,
+#ItemManage td {
+  border: none;
+  width: 20vw;
+  height: 4vw;
+  text-align: center;
+  border: 1px solid #ffffff28;
+  color: #ffffff;
+}
+
+#CustomerManage th,
+#ItemManage th {
+  background-color: #400e32;
+  color: rgb(255, 255, 255);
+}
+
+section {
+  display: none;
+}
+
+.includeDetails {
+  border: 1px solid #ffffff;
+  padding: 20px;
+}
+
+#OrderManage > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+#OrderManage > :first-child > div {
+  margin-top: 12vh;
+}
+
+#OrderManage h1 {
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+}
+
+#OrderManage .includeDetails form div > div,
+#OrderManage .includeDetails form > :last-child {
+  margin-top: 0;
+  margin: 10px 15px;
+}
+
+#OrderManage .includeDetails form > :first-child {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#OrderManage .ItemSelect form > :first-child {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+#OrderManage .ItemSelect form div > div,
+#OrderManage .ItemSelect form > :last-child {
+  margin-top: 0;
+  margin: 10px 15px;
+}
+
+#OrderManage .ItemSelect form > :nth-child(2) {
+  display: grid;
+  grid-template-columns: 40% 39% 20%;
+  margin: 0;
+}
+
+.ItemSelect > :last-child {
+  display: flex;
+  justify-content: end;
+}
+
+.ItemSelect button {
+  padding: 10px 20px;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
+  background-color: #0b7128;
+  color: white;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+.ItemSelect {
+  border: 1px solid #ffffff;
+  padding: 20px;
+}
+
+#OrderManage .TotalCal h1,
+.TotalCal h2 {
+  background-color: transparent;
+  padding: 0;
+  font-size: 30px;
+  color: #000000;
+  font-weight: 400;
+}
+
+.TotalCal {
+  background-color: #ffffff40;
+  padding: 20px;
+}
+
+.TotalCal h2 {
+  color: #ffffff;
+}
+
+.TotalCal form > :first-child {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.TotalCal > :last-child {
+  display: flex;
+  justify-content: center;
+}
+
+.TotalCal button {
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  margin-top: 50px;
+}
+
+.tableRow {
+  height: auto;
+}
+
+.table > div,
+.tableRows > div {
+  display: flex;
+}
+
+.table,
+.tableRows {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5.7vw;
+}
+
+.table > div > div,
+.tableRows > div > div {
+  width: 18vw;
+  height: 4vw;
+  border: 0.5px solid #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tableRows > div > div {
+  width: 20vw;
+  color: #ffffff;
+}
+
+#OrderManage > :last-child {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 34vh;
+}
+
+.table > div > div {
+  background-color: #000000c8;
+  color: white;
+  border: 1px solid #ffffff;
+}
+
+h5 {
+  font-size: 15px;
+  color: #ff0000;
+  font-weight: 400;
+  position: absolute;
+  margin-top: 8.1vh;
+}
+
+#homePage > div {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.counts > div {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.counts > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000094;
+  width: 20%;
+  text-align: center;
+  padding: 10px 0px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.652);
+}
+
+.counts h1 {
+  font-size: 32px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.counts h2 {
+  font-weight: 500;
+  color: #ffffff;
+  margin-top: 20px;
+  font-size: 34px;
+}
+
+.counts img {
+  width: 30%;
+  margin-top: 10px;
+}
+
+#homePage .counts {
+  position: absolute;
+  display: block;
+  height: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.buttons {
+  flex-direction: row;
+  font-size: 18px !important;
+  gap: 26px;
+}
+
+.buttons button {
+  padding: 10px;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
+  background-color: #b1b1b136;
+  color: #ffffff;
+}
+
+.buttons button:hover {
+  color: #ffffff;
+  box-shadow: #3c3a3a 0px 0px 10px;
+}
+
+.buttons > :first-child {
+  border-color: #00335f;
+}
+
+.buttons > :first-child:hover {
+  background-color: #057be3;
+}
+
+.buttons > :nth-child(2) {
+  border-color: #db3843;
+}
+
+.buttons > :nth-child(2):hover {
+  background-color: #ff0011;
+}
+
+.buttons > :nth-child(3) {
+  border-color: #febf04;
+}
+
+.buttons > :nth-child(3):hover {
+  background-color: #ff9900;
+}
+
+.buttons > :nth-child(4) {
+  border-color: #24a746;
+}
+
+.buttons > :nth-child(4):hover {
+  background-color: #006f1e;
+}
+
+.buttons > :nth-child(5) {
+  border-color: #020202;
+}
+
+.buttons > :nth-child(5):hover {
+  background-color: #f700ff;
+}
