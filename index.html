@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style/Style.css">
     <title>Home Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <body>
 <!--- header--------->
     <header>
@@ -83,7 +85,7 @@
                             <th>Customer Salary</th>
                         </tr>
                     </thead>
-                    <tbody class="tableRow">
+                    <tbody id="cus-tbl">
                     </tbody>
                 </table>
             </div>
@@ -279,7 +281,6 @@
     <!--------------------------------Orders End-------------->
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="module" src="Controller/CustomerController.js"></script>
 <script type="module" src="Controller/ItemController.js"></script>
 <script type="module" src="Controller/OrderController.js"></script>
