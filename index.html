@@ -4,16 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style/Style.css">
-    <title>Home Page</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./Style/Style.css">
 
+    <title>Home Page</title>
 <body>
-<!--- header--------->
     <header>
-        
+        <div class="headerIcon">
+            <img src="./assests/img/img/logo.png" alt="">
+        </div>
         <div class="sectionName">
-           <h1>Home</h1>
+           <h1>Dashboard</h1>
         </div>
          
         <div class="page-Icon">
@@ -22,21 +22,25 @@
         </div>
 
         <ul>
-            <li><a href="/home.html" class="nav-link">Home</a></li>
-            <li><a href="#CustomerManage" class="nav-link">Customer</a></li>
-            <li><a href="#ItemManage" class="nav-link">>Item</a></li>
-            <li><a href="#OrderManage" class="nav-link orderManageBtn">Orders</a></li>
-        </ul>
+            <li><a href="#homePage" class="nav-link"><img src="./assests/img/img/home.png" alt="">Dashboard</a></li>
+            <li><a href="#CustomerManage" class="nav-link"><img src="./assests/img/img/customer.png" alt="">Customer</a></li>
+            <li><a href="#ItemManage" class="nav-link"><img src="./assests/img/img/item.png" alt="">Item</a></li>
+            <li><a href="#OrderManage" class="nav-link orderManageBtn"><img src="./assests/img/img/order.png" alt="">Orders</a></li>
+        </ul> 
     </header>
 
-<!--------------------------------end header-------------->
-
-<!--------------------------------home start-------------->
-   
-<!--------------------------------home end-------------->
-
-<!--------------------------------Customer Start-------------->
-
+    <section id="homePage" >
+        
+        <div class="row">
+            <div class="col-md-4">
+              <canvas id="pieChart"></canvas>
+            </div>
+            <div class="col-md-6">
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+        
+    </section>
     <section id="CustomerManage">
         <div>
 
@@ -52,7 +56,7 @@
                     <div>
                         <label for="">Customer Name</label>
                         <input type="text" class="custName">
-                        <h5 class="invalidCustName">aa</h5>
+                        <h5 class="invalidCustName"></h5>
                     </div>
                     <div>
                         <label for="">Customer Address</label>
@@ -66,7 +70,7 @@
                     </div>
     
                     <div class="buttons">
-                        <button type="submit" class="saveBtn">Save Cus.</button>
+                        <button type="submit" class="saveBtn">Save Customer</button>
                         <button class="removeBtn">Remove</button>
                         <button class="updateBtn">Update</button>
                         <button class="searchBtn">GetAll</button>
@@ -85,7 +89,7 @@
                             <th>Customer Salary</th>
                         </tr>
                     </thead>
-                    <tbody id="cus-tbl">
+                    <tbody class="tableRow">
                     </tbody>
                 </table>
             </div>
@@ -93,15 +97,13 @@
         </div>
     </section>
 
-<!--------------------------------Customer End-------------->
-
-<!--------------------------------Item Start-------------->
+    <!-- --------------------------------------------end of customer manage-------------------------------------------- -->
 
     <section id="ItemManage">
         <div>
 
             <div>
-             
+                
     
                 <form action="" class="inputData" id="ItemForm">
                     <div>
@@ -145,7 +147,7 @@
                         </tr>
                     </thead>
                     <tbody class="tableRow">
-                       
+
                     </tbody>
                 </table>
             </div>
@@ -153,14 +155,12 @@
         </div>
     </section>
 
-<!--------------------------------Item End-------------->
-
-<!--------------------------------Orders Start-------------->
+    <!-- --------------------------------------------end of item manage-------------------------------------------- -->
 
     <section id="OrderManage">
         <div>
             <div class="includeDetails">
-               
+                <h1>Include Details</h1>
                 <div>
                     <form action="">
                         <div>
@@ -247,11 +247,11 @@
                         </div>
                         <div>
                             <label for="">Discount</label>
-                            <input type="number" class="Discount">
+                            <input type="number" class="Discount"   placeholder="0">
                         </div>
                     </div>
                     <div>
-                        <label for="">Balance</label>
+                        <label  for="">Balance</label>
                         <input type="number" class="Balance">
                     </div>
                 </form>
@@ -277,10 +277,10 @@
             </div>
         </div>
     </section>
-
-    <!--------------------------------Orders End-------------->
 </body>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="module" src="Controller/CustomerController.js"></script>
 <script type="module" src="Controller/ItemController.js"></script>
 <script type="module" src="Controller/OrderController.js"></script>
@@ -300,24 +300,26 @@ $(document).ready(function(){
             $(targetSection).show();
             switch(targetSection){
                 case '#CustomerManage':
-                    $('.sectionName h1').text('Customer Manage');
+                    $('.sectionName').text('Customer Manage');
                     document.title = "Customer Manage";
                     break;
                 case '#ItemManage':
-                    $('.sectionName h1').text('Item Manage');
-                   
+                    $('.sectionName').text('Item Manage');
                     document.title = "Item Manage";
                     break;
                 case '#OrderManage':
-                    $('.sectionName h1').text('Order Manage');
+                    $('.sectionName').text('Order Manage');
                     document.title = "Order Manage";
                     break;
                 default:
-                    $('.sectionName h1').text('Home');
-                    document.title = "Home";
+                    $('.sectionName').text('Dashboard');
+                    document.title = "Home Page";
             }
         });
     });
+
+
+
 
 </script>
 </html>

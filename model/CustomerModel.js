@@ -1,71 +1,99 @@
-const backendUrl =
-  "http://localhost:8080/Pos_System_Backend_war_exploded/customer";
+import { Customers } from '../db/DB.js';
 
-export async function getAllCustomers() {
-  try {
-    const response = await fetch(backendUrl);
-    if (!response.ok) throw new Error("Failed to fetch");
-
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-}
-
-export async function saveCustomer(newCustomer) {
-  try {
-    const response = await fetch(backendUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newCustomer),
-    });
-
-    if (!response.ok) throw new Error("Failed to add customer.");
-    const customer = await response.json();
-    return customer;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-}
-
-export async function updateCustomer(cusId, updatedCustomer) {
-  try {
-    const response = await fetch(`${backendUrl}/${cusId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedCustomer),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`Failed to update customer: ${errorText}`);
+export function saveCustomer(customer) {
+    let customerData = {
+        id :customer.custId,
+        name : customer.custName,
+        address : customer.custAddress,
+        salary : customer.custSalary
     }
 
-    const customer = await response.json();
-    return customer;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
+    const customerJson = JSON.stringify(customerData)
+
+    const http = new XMLHttpRequest()
+    http.onreadystatechange = () =>{
+        if (http.readyState === 4){
+            if (http.status === 201){
+
+            }
+        }
+    }
+
+    http.open("POST","http://localhost:8080/Pos_System_Backend_war_exploded/customer")
+    http.setRequestHeader("Content-type","application/json")
+    http.send(customerJson);
+
 }
 
-export async function deleteCustomer(cusId) {
-  try {
-    const response = await fetch(`${backendUrl}/${cusId}`, {
-      method: "DELETE",
+export function getAllCustomers() {
+
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `http://localhost:8080/Pos_System_Backend_war_exploded/customer?id=all`,
+            method: "GET",
+            dataType: "json", // Ensure the response is treated as JSON
+            success: function (data) {
+                if (!Array.isArray(data)) {
+                    reject(new Error("Expected an array of customers"));
+                    return;
+                }
+
+                let returnData = data.map((customer) => ({
+                    custId: customer.id,
+                    custName: customer.name,
+                    custAddress: customer.address,
+                    custSalary: customer.salary
+                }));
+
+                console.log(returnData, "=============================================temp cust=");
+                resolve(returnData);
+            },
+            error: function (error) {
+                reject(error);
+            }
+        });
     });
-
-    if (!response.ok) throw new Error("Failed to delete customer");
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
 }
+
+export function updateCustomer(index , customer){
+
+    let customerData = {
+        id :customer.custId,
+        name : customer.custName,
+        address : customer.custAddress,
+        salary : customer.custSalary
+    }
+
+    const customerJson = JSON.stringify(customerData)
+
+    $.ajax({
+        url : "http://localhost:8080/Pos_System_Backend_war_exploded/customer",
+        method : "PUT",
+        data : customerJson,
+        headers : {"Content-Type": "application/json"},
+        success : function (res){
+            console.log("Customer Updated");
+        },
+    })
+
+}
+
+export function deleteCustomer(index){
+
+    $.ajax({
+        url : `http://localhost:8080/Pos_System_Backend_war_exploded/customer?id=${index}`,
+        method : "DELETE",
+        success : function (res){
+            console.log("Customer Deleted");
+        }
+    })
+
+}
+
+// export function getAllCustomers(){
+//     console.log("=============================================getAllCustomers");
+//     getAllCustomer().then((customer) =>{
+//         console.log(customer,"=============================================getAllCustomers");
+//         return customer;
+//     })
+// }

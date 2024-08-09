@@ -15,19 +15,19 @@ $('.orderManageBtn').click(function(){
     refresh();
 });
 
-function refresh(){
-    $('#OrderManage .orderId').val(generateId());
+async function refresh() {
+    generateId();
     $('#OrderManage .orderDate').val(new Date().toISOString().split('T')[0]);
     loadCustomer();
     loadItems();
     $('#OrderManage .Total').text("");
     // $('#OrderManage .SubTotal').text("");
     // $('#OrderManage .SubTotal').text("");
-    // $('#OrderManage .Balance').val("");
+    $('#OrderManage .Balance').val("");
     $('#OrderManage .Cash').val('');
     $('#OrderManage .Discount').val('');
-
-    $('.counts .orders h2').text(getAllOrders().length);
+    const allOrder = await getAllOrders();
+    $('.counts .orders h2').text(allOrder.length);
 }
 
 function extractNumber(id){
@@ -38,29 +38,32 @@ function extractNumber(id){
     return null;
 }
 
-function generateId(){
-    let orders = getAllOrders();
-
+async function generateId() {
+    let orders = await getAllOrders();
     // alert(orders.length);
-    
-    if(orders.length === 0){
-        return 'OD01';
-    }
-    else{
+    let id ;
+    if (orders.length === 0) {
+        id = 'OD01';
+    } else {
         // alert('awa');
-        let orderId = orders[orders.length - 1].orderId;
-        let number = extractNumber(orderId);
-        number++;
-        // alert('OD0' + number);
-        return 'OD0' + number;
+        let orderId = orders[orders.length - 1].id;
+        // let number = extractNumber(orderId);
+        var match = orderId.match(/OD(\d+)/);
+
+        if(match && match.length > 1){
+            let number = match[1];
+            number++
+            id ='OD0' + number;
+        }
     }
+    $('#OrderManage .orderId').val(id);
 }
 
-function loadCustomer(){
+async function loadCustomer() {
     let cmb = $('#OrderManage .customers');
     cmb.empty();
     let option = [];
-    let customers = getAllCustomers();
+    let customers = await getAllCustomers();
     option.unshift('');
     for (let i = 0; i < customers.length; i++) {
         option.push(customers[i].custId);
@@ -71,19 +74,21 @@ function loadCustomer(){
     });
 }
 
-$('#OrderManage .customers').change(function(){
-    let customer = getAllCustomers().find(c => c.custId === $(this).val());
+$('#OrderManage .customers').change(async function () {
+    const customers = await getAllCustomers();
+    const customerId = $(this).val();
+    const customer = customers.find(c => c.custId === customerId);
     $('#OrderManage .custId').val(customer.custId);
     $('#OrderManage .custName').val(customer.custName);
     $('#OrderManage .custAddress').val(customer.custAddress);
     $('#OrderManage .custSalary').val(customer.custSalary);
 });
 
-function loadItems(){
+async function loadItems() {
     let cmb = $('#OrderManage .itemCmb');
     cmb.empty();
     let option = [];
-    let items = getAllItems();
+    let items = await getAllItems();
 
     for (let i = 0; i < items.length; i++) {
         option.push(items[i].itemId);
@@ -96,8 +101,12 @@ function loadItems(){
     });
 }
 
-$('#OrderManage .itemCmb').change(function(){
-    let item = getAllItems().find(i => i.itemId === $(this).val());
+$('#OrderManage .itemCmb').change(async function () {
+    const items = await getAllItems();
+    console.log(items);
+    const getItemId = $(this).val();
+    const item = items.find(c => c.itemId === getItemId);
+    console.log(item);
     itemId = item.itemId;
     // alert(item.itemQty);
     itemQty = item.itemQty;
@@ -205,19 +214,19 @@ function setTotal(){
     $('#OrderManage .Total').text(total);
 }
 
-$('#OrderManage .placeOrder').click(function(){
+$('#OrderManage .placeOrder').click( function(){
     let cash = parseFloat($('#OrderManage .Cash').val());
     let total = parseFloat($('#OrderManage .Total').text());
     let discount = parseFloat($('#OrderManage .Discount').val());
 
-    // alert(cash + ' ' + total + ' ' + discount);
-
+    
     if(cash >= total){
+       
         if(discount >= 0 && discount <= 100){
             let subTotal = total - (total * discount / 100);
             $('#OrderManage .SubTotal').text(subTotal.toFixed(2));
             let balance = cash - subTotal;
-            $('#OrderManage .Balance').val(balance.toFixed(2));
+            $('#OrderManage.Cash').val(balance.toFixed(2));
 
             let Order = {
                 orderId : $('#OrderManage .orderId').val(),
@@ -247,13 +256,19 @@ $('#OrderManage .placeOrder').click(function(){
 });
 
 
-function updateItemData(){
-    let items = getAllItems();
-    for(let i = 0; i < getItems.length; i++){
+async function updateItemData() {
+    let items = await getAllItems();
+    for (let i = 0; i < getItems.length; i++) {
         let item = items.find(I => I.itemId === getItems[i].itemCode);
         item.itemQty -= getItems[i].itemQty;
         let index = items.findIndex(I => I.itemId === getItems[i].itemCode);
-        updateItem(index, item);
+        let sendItem = {
+            itemId: item.itemId,
+            itemName: item.itemName,
+            itemQty: item.itemQty,
+            itemPrice: item.itemPrice
+        }
+        updateItem(index, sendItem);
     }
 }
 
@@ -284,13 +299,4 @@ function dropItem(){
 }
 
 
-
-// $('#OrderManage .clearBtn').click(function(){
-//  clearFeilds();
-// });
-// function clearFeilds(){
-//     $('#OrderManage .itemCode').val('');
-//     $('#OrderManage .itemName').val('');
-//     $('#OrderManage .itemPrice').val('');
-//     $('#OrderManage .orderQty').val('');
-// }
+// $('#orderManage .itemCmb')
